@@ -4,5 +4,8 @@
         {"id":1,"name":"porte","condition":false},
         {"id":2,"name":"mur","condition":"cle_sous_sol", "erreur":"il vous faut la cle"}
        
+    ],
+    "object":[
+        {"id":0,"name":"cle_sous_sol", "message":"il y les cles du sous sol"}
     ]
 }
