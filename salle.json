@@ -1,46 +1,67 @@
 {
-    "salle":[
+    "maisonR":[
         {
-            "id":0,"name":"error","annonce":"Vous ne pouvez pas aller de ce coté."
+            "id":0,"name":"error","annonce":"Vous ne pouvez pas aller de ce coté.","join":null
         },
         {
-            "id":1,"name":"chambre0","annonce":"Vous etes dans la chambre de toto."
+            "id":1,"name":"chambre0","annonce":"Vous etes dans la chambre de toto.","pos":{"x":0,"y":3},"join":null
         },
         {
-            "id":2,"name":"salon","annonce":"Vous etes dans la chambre de toto."
+            "id":2,"name":"salon","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":3,"name":"couloir1","annonce":"Vous etes dans la chambre de toto."
+            "id":3,"name":"couloir1","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":4,"name":"chambre1","annonce":"Vous etes dans la chambre de toto."
+            "id":4,"name":"chambre1","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":5,"name":"chambre2","annonce":"Vous etes dans la chambre de toto."
+            "id":5,"name":"chambre2","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":6,"name":"salle de bain","annonce":"Vous etes dans la chambre de toto."
+            "id":6,"name":"salle de bain","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":7,"name":"vestibule","annonce":"Vous etes dans la chambre de toto."
+            "id":7,"name":"vestibule","annonce":"Vous etes dans la chambre de toto.","pos":{"x":1,"y":2},"join":null
         },
         {
-            "id":8,"name":"escalier","annonce":"Vous etes dans la chambre de toto."
+            "id":8,"name":"escalier","annonce":"Vous etes dans la chambre de toto.","join":{"lieu":"maison1","salle":1}
         },
         {
-            "id":9,"name":"cuisine","annonce":"Vous etes dans la chambre de toto."
+            "id":9,"name":"cuisine","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":10,"name":"veranda","annonce":"Vous etes dans la chambre de toto."
+            "id":10,"name":"veranda","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":11,"name":"sous-sol","annonce":"Vous etes dans la chambre de toto."
+            "id":11,"name":"sous-sol","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":12,"name":"jardin","annonce":"Vous etes dans la chambre de toto."
+            "id":12,"name":"jardin","annonce":"Vous etes dans la chambre de toto.","join":null
         },
         {
-            "id":20,"name":"rue","annonce":"Vous etes dans la chambre de toto."
+            "id":13,"name":"rue","annonce":"Vous etes dans la chambre de toto.","join":null
+        }
+    ],
+    "maison1":
+    [
+        {
+            "id":0,"name":"error","annonce":"Vous ne pouvez pas aller de ce coté.","join":null
+        },
+        {
+            "id":1,"name":"messanine","annonce":"Salle confortable.","pos":{"x":1,"y":1},"join":null
+        },
+        {
+            "id":2,"name":"chambre4","annonce":"Vous etes dans la chambre de toto.","join":null
+        },
+        {
+            "id":3,"name":"chambre5","annonce":"Vous etes dans la chambre de toto.","join":null
+        },
+        {
+            "id":4,"name":"salle de bain","annonce":"Vous etes dans la chambre de toto.","join":null
+        },
+        {
+            "id":5,"name":"escalier","annonce":"Vous etes dans la chambre de toto.","join":{"lieu":"maisonR","salle":7}
         }
     ]
 }
