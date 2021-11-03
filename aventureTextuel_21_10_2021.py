@@ -17,6 +17,7 @@ class Salle:
             self.salle_dict = json.load(f)
         with open('element2jeu.json') as f:    
             self.element2jeu = json.load(f)
+        self.inventaire=[]
     def get_map(self, x,y, name_lieu_get_map, name_map_get_map):
         #retourne l'ID de coordoné x,y
         try:
@@ -55,7 +56,7 @@ class Salle:
                     rep_get_mur[i]=False
                     #on explique la raison du refu du deplacent
                     rep_get_mur["erreur"]=self.element2jeu["deplacement"][i]["erreur"] 
-        except:
+        except :
             rep_get_mur["erreur"]="erreur exept in Salle.get_mur()"
         return rep_get_mur
         
