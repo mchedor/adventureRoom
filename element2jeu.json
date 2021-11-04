@@ -7,5 +7,11 @@
     ],
     "object":[
         {"id":0,"name":"cle_sous_sol", "message":"il y les cles du sous sol"}
-    ]
+    ],
+    "achievment":{
+        "salle":{
+            "sous-sol":{"id":0, "name":"sous_sol", "fin":true, "message":"vous etes mort en tombant des escalier ... ", "condition":{"type":"salle","lieu":"maisonR","IDsalle":11}},
+            "salon":{"id":1, "name":"premier pas", "fin":false, "message":"bravo pour vos premier pas ", "condition":{"type":"salle","lieu":"maisonR","IDsalle":2}}
+        }
+    }
 }

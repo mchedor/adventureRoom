@@ -18,6 +18,7 @@ class Salle:
         with open('element2jeu.json') as f:    
             self.element2jeu = json.load(f)
         self.inventaire=[]
+        self.achievment={"salle":[]}
     def get_map(self, x,y, name_lieu_get_map, name_map_get_map):
         #retourne l'ID de coordoné x,y
         try:
@@ -71,47 +72,70 @@ class Salle:
         #les fleches pour changer de salle
         #[0] pour rechercher
         #[1:9] pour interagir
+        """
+        if entrer in ("z","q","s","d"):
+            self.action_salle(entrer)
+        """
         mur=self.get_mur(self.x,self.y,self.lieu_name)
         print("mur : ", mur)
         print("inv : ",self.inventaire)
+        print("achievment : ",self.achievment)
         if entrer=="z" and mur["h"]==True:
                 self.y+=-1
+                self.action_salle()
         elif entrer=="s" and mur["b"]==True:
                 self.y+=1
         elif entrer=="q" and mur["g"]==True:
                 self.x+=-1
+                self.action_salle()
         elif entrer=="d" and mur["d"]==True:
                 self.x+=1
+                self.action_salle()
         elif entrer=="e":
             exit()
         else:
             #on affiche la raison de l'impossibiliter du déplacement
             print(mur["erreur"])
-            return 0
+            return 0 
         
+    
+    def action_salle(self):
         #ON VERRIFIE SI LA SALLE EST JOIN
-        #salle_action contient l'ID de la salle 
-        salle_action = self.map[self.lieu_name]["salle"][self.y][self.x]
-        #lieu_name_action est une variable de passage contenant le nom du premier lieu.
-        lieu_name_action=self.lieu_name
+        #salle_action_salle contient l'ID de la salle 
+        salle_action_salle = self.map[self.lieu_name]["salle"][self.y][self.x]
+        #lieu_name_action_salle est une variable de passage contenant le nom du premier lieu.
+        lieu_name_action_salle=self.lieu_name
         #si la salle avec cette ID est "join" (mene vers un autre lieu)
-        if self.salle_dict[self.lieu_name][salle_action]["join"]:
+        if self.salle_dict[self.lieu_name][salle_action_salle]["join"]:
             #on change le lieu par le lieu stoké dans le "join"
-            self.lieu_name=self.salle_dict[self.lieu_name][salle_action]["join"]["lieu"] 
+            self.lieu_name=self.salle_dict[self.lieu_name][salle_action_salle]["join"]["lieu"] 
             # on modifie x et y à partir de la salle d'arriver contenut dans "join" et on récupere dans cette salle la la "pos"
-            self.x=self.salle_dict[self.lieu_name][self.salle_dict[lieu_name_action][salle_action]["join"]["salle"]]["pos"]["x"]
-            self.y=self.salle_dict[self.lieu_name][self.salle_dict[lieu_name_action][salle_action]["join"]["salle"]]["pos"]["y"]   
-        
+            self.x=self.salle_dict[self.lieu_name][self.salle_dict[lieu_name_action_salle][salle_action_salle]["join"]["salle"]]["pos"]["x"]
+            self.y=self.salle_dict[self.lieu_name][self.salle_dict[lieu_name_action_salle][salle_action_salle]["join"]["salle"]]["pos"]["y"]       
         #ON VERRIFIE SI LA SALLE CONTIENT UN OBJET
-        #salle_action contient l'ID de la salle 
-        salle_action = self.map[self.lieu_name]["salle"][self.y][self.x]
-        #salle_action contient la salle 
-        salle_action = self.salle_dict[self.lieu_name][salle_action]
-        if "object" in salle_action:
-            if self.element2jeu["object"][salle_action["object"]]["name"] not in self.inventaire:
-                self.inventaire.append(self.element2jeu["object"][salle_action["object"]]["name"])
-            
+        #salle_action_salle contient l'ID de la salle 
+        salle_action_salle = self.map[self.lieu_name]["salle"][self.y][self.x]
+        #salle_action_salle contient la salle 
+        salle_action_salle = self.salle_dict[self.lieu_name][salle_action_salle]
+        if "object" in salle_action_salle:
+            if self.element2jeu["object"][salle_action_salle["object"]]["name"] not in self.inventaire:
+                self.inventaire.append(self.element2jeu["object"][salle_action_salle["object"]]["name"])
+        #ON VERRIFFI SI LA SALLE CONTIENT UN ACCHEVENT OU UNE FIN
+        self.achievment_salle(salle_action_salle)
 
+    def achievment_salle(self,salle):
+        try:
+            if self.element2jeu["achievment"]["salle"][str(salle["name"])]:
+                if self.element2jeu["achievment"]["salle"][salle["name"]]["fin"]:
+                    print(self.element2jeu["achievment"]["salle"][salle["name"]]["message"])
+                    exit()
+                else:
+                    self.achievment["salle"].append(salle["name"])
+        except KeyError as a:
+            #print("error", a)
+            pass
+
+    
     def annonce(self):
         print(self.salle_dict[self.lieu_name][self.map[self.lieu_name]["salle"][self.y][self.x]]["name"])
 
@@ -130,5 +154,3 @@ if __name__=="__main__":
             print("s :",(y*2)+1)
             print("g :",y*2)
             print("d :",y*2)
-
-
