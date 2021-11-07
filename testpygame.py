@@ -3,12 +3,45 @@ import pygame
 from pygame.locals import *
 import aventure
 
+
+
+
 def jeu():
+    debug =None
     s = aventure.Salle()
-    
+    print(s.map)
+    loop=s.loop
+    while loop:
+        act=""
+        for event in pygame.event.get():
+            print("event: ",event)
+            if event.type == pygame.KEYDOWN:  #lecture du clavier
+                act=mouvement(event.key)
+                if event.key == pygame.K_ESCAPE or event.unicode == 'q': #touche q pour quitter
+                    loop=False
+        if act: 
+            s.action(act)
+            print(str(s.get_annonce()))
+            if debug:
+                y=s.y
+                print("x :",s.x,"\ny : ", y)
+                print("mur y :\n h :",((y-1)*2)+1)
+                print("s :",(y*2)+1)
+                print("g :",y*2)
+                print("d :",y*2)
+        loop=s.loop
 
-
-
+def mouvement(e):
+    if e==K_LEFT:
+        return "q"
+    elif e==K_UP:
+        return "z"
+    elif e==K_RIGHT:
+        return "d"
+    elif e==K_DOWN:
+        return "s"
+    else:
+        return ""
 
 
 #Initialisation de la bibliothèque Pygame

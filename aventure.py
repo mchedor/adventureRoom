@@ -19,7 +19,7 @@ class Salle:
         self.inventaire=[]
         self.achievment={"salle":[]}
         self.annonce=""
-        self.fin=False
+        self.loop=True
     def get_map(self, x,y, name_lieu_get_map, name_map_get_map):
         #retourne l'ID de coordoné x,y
         try:
@@ -59,8 +59,11 @@ class Salle:
                     rep_get_mur[i]=False
                     #on explique la raison du refu du deplacent
                     erreur_action=self.element2jeu["deplacement"][contenui]["erreur"]
+                elif condition_get_mur==None:
+                    erreur_action=self.element2jeu["deplacement"][contenui]["erreur"]
                 else:
                     rep_get_mur[i]=False 
+                    erreur_action=self.element2jeu["deplacement"][contenui]["erreur"]
             if erreur_action:
                 rep_get_mur["erreur"]=erreur_action
         except ValueError as a:
@@ -93,8 +96,8 @@ class Salle:
                 self.x+=1
                 self.action_salle()
         elif entrer=="e":
-            exit()
-        else:
+            self.loop=False
+        elif entrer=="z" or entrer=="s" or entrer=="q" or entrer=="d":
             #on affiche la raison de l'impossibiliter du déplacement
             print(mur["erreur"])
             self.annonce+="\n"+mur["erreur"]
@@ -134,7 +137,7 @@ class Salle:
             if self.element2jeu["achievment"]["salle"][str(salle["name"])]:
                 if self.element2jeu["achievment"]["salle"][salle["name"]]["fin"]:
                     self.annonce+="\n"+self.element2jeu["achievment"]["salle"][salle["name"]]["message"]
-                    self.fin=True
+                    self.loop=False
                 else:
                     self.achievment["salle"].append(salle["name"])
                     self.annonce+="\n"+self.element2jeu["achievment"]["salle"][salle["name"]]["message"]
@@ -158,7 +161,7 @@ if __name__=="__main__":
         s.action(act)
         global str
         print(str(s.get_annonce()))
-        if s.fin:
+        if s.loop==False:
             exit()
         y=s.y
         if debug:
