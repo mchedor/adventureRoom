@@ -89,6 +89,7 @@ class Salle:
                 self.action_salle()
         elif entrer=="s" and mur["b"]==True:
                 self.y+=1
+                self.action_salle()
         elif entrer=="q" and mur["g"]==True:
                 self.x+=-1
                 self.action_salle()
@@ -139,9 +140,9 @@ class Salle:
                     self.annonce+="\n"+self.element2jeu["achievment"]["salle"][salle["name"]]["message"]
                     self.loop=False
                 else:
-                    self.achievment["salle"].append(salle["name"])
-                    self.annonce+="\n"+self.element2jeu["achievment"]["salle"][salle["name"]]["message"]
-                    
+                    if salle["name"] not in self.achievment["salle"]:
+                        self.achievment["salle"].append(salle["name"])
+                        self.annonce+="\n"+self.element2jeu["achievment"]["salle"][salle["name"]]["message"]          
         except KeyError as a:
             #print("error", a)
             pass
@@ -151,6 +152,14 @@ class Salle:
         annonce=self.annonce
         self.annonce=""
         return str(annonce)
+    
+    def get_image(self):
+        salle_get_image=self.salle_dict[self.lieu_name][self.map[self.lieu_name]["salle"][self.y][self.x]]
+        if salle_get_image["image"]:
+            return self.lieu_name+"/"+salle_get_image["image"]
+        else:
+            return None
+
 
 debug=None
 if __name__=="__main__":
