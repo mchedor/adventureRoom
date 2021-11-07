@@ -6,7 +6,8 @@
        
     ],
     "object":[
-        {"id":0,"name":"cle_sous_sol", "message":"Vous recuperez les cles du sous sol"}
+        {"id":0,"name":"cle_sous_sol", "message":"Vous recuperez les cles du sous sol"},
+        {"id":1,"name":"cle_voiture", "message":"Vous recuperez les cles de la voiture"}
     ],
     "achievment":{
         "salle":{

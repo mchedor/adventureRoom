@@ -25,7 +25,7 @@
             "id":7,"name":"vestibule","annonce":"Vous etes dans le vestibule.","pos":{"x":1,"y":2},"join":null,"image":"vestibule.jpg"
         },
         {
-            "id":8,"name":"escalier","annonce":"Vous monter l'escalier.","join":{"lieu":"maison1","salle":1},"image":"escalier.jpg"
+            "id":8,"name":"escalier","annonce":"Vous montez l'escalier.","join":{"lieu":"maison1","salle":1},"image":"escalier.jpg"
         },
         {
             "id":9,"name":"cuisine","annonce":"Vous etes dans la cuisine.","join":null,"image":"cuisine.jpg"
@@ -49,19 +49,19 @@
             "id":0,"name":"error","annonce":"Vous ne pouvez pas aller de ce coté.","join":null,"image":null
         },
         {
-            "id":1,"name":"mezzanine","annonce":"Vous etes dans la mezzanine","pos":{"x":1,"y":1},"join":null,"image":null
+            "id":1,"name":"mezzanine","annonce":"Vous etes dans la mezzanine","pos":{"x":1,"y":1},"join":null,"image":"mezzanine.jpg"
         },
         {
-            "id":2,"name":"chambre4","annonce":"Vous etes dans la chambre de toto.","join":null,"image":null
+            "id":2,"name":"chambre4","annonce":"Vous etes dans une chambre.","join":null,"image":"chambre4.jpg"
         },
         {
-            "id":3,"name":"chambre5","annonce":"Vous etes dans la chambre de toto.","join":null,"image":null
+            "id":3,"name":"chambre5","annonce":"Vous etes dans une chambre.","join":null,"image":"chambre5.jpg"
         },
         {
-            "id":4,"name":"salle de bain","annonce":"Vous etes dans la chambre de toto.","join":null,"image":null
+            "id":4,"name":"salle de bain","annonce":"Vous passez dans la salle de bain","join":null,"image":"salle_de_bain2.jpg"
         },
         {
-            "id":5,"name":"escalier","annonce":"Vous etes dans la chambre de toto.","join":{"lieu":"maisonR","salle":7},"image":null
+            "id":5,"name":"escalier","annonce":"Vous descendez l'escalier.","join":{"lieu":"maisonR","salle":7},"image":"escalier.jpg"
         }
     ]
 }

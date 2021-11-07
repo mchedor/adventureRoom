@@ -20,11 +20,19 @@ def jeu():
     s = aventure.Salle()
     print(s.map)
     loop=s.loop
+    annonce="Vous vous reveillez dans une chambre inconnue.\n En vous regardant vous vous rendez compte que vous avez changer de corps ..."
     if s.get_image():
+        
         image_chemin="image/"
         print(image_chemin+s.get_image())
         fond = pygame.image.load(image_chemin+s.get_image()).convert()
-        fenetre.blit(pygame.transform.scale(fond, (largeur,hauteur)),(0,0))
+        #fenetre.fill(pygame.Color('white'))
+        fenetre.blit(fond, (0,0))
+        dialogue=pygame.image.load("image/dialogue.png")
+        dialogue_x=(largeur/2)-(dialogue.get_size()[0]/2)
+        dialogue_y=650
+        fenetre.blit(dialogue, (dialogue_x,dialogue_y))
+        blit_text(fenetre, annonce, (dialogue_x+30, dialogue_y+40), font)
         pygame.display.flip()
     while loop:
         act=""
@@ -41,7 +49,6 @@ def jeu():
             s.action(act)
             annonce=s.get_annonce()
             print(annonce)
-            fenetre.blit(font.render(annonce, True, (0, 255, 0)),(0,300))
             if debug=="toto":
                 y=s.y
                 print("x :",s.x,"\ny : ", y)
@@ -68,7 +75,7 @@ def jeu():
             if loop==False:
                 time.sleep(5)
 
-def blit_text(surface, text, pos, font, color=pygame.Color('black')):
+def blit_text(surface, text, pos, font, color=pygame.Color('white')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
     space = font.size(' ')[0]  # The width of a space.
     max_width, max_height = surface.get_size()
